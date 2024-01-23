@@ -1,170 +1,173 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "title": "Open Data Contract Standard (OCDS)",
+  "title": "Open Data Contract Standard (OCDS) for Elvia",
   "description": "An open data contract specification to establish agreement between data producers and consumers.",
   "type": "object",
   "properties": {
     "version": {
       "type": "string",
-      "description": "Current version of the data contract."
+      "description": "Current version of the data contract. (obligatorisk)"
     },
     "kind": {
       "type": "string",
       "default": "DataContract",
-      "description": "The kind of file this is. Valid value is `DataContract`.",
-      "enum": ["DataContract"]
+      "description": "The kind of file this is. Valid value is `DataContract`. (obligatorisk)",
+      "enum": ["DataContract"] 
     },
     "apiVersion": {
       "type": "string",
       "default": "v2.3.0",
-      "description": "Version of the standard used to build data contract. Default value is v2.3.0.",
+      "description": "Version of the standard used to build data contract. Default value is v2.3.0. (TODO:obligatorisk/anbefalt/valgfri)",
       "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+"
     },
     "uuid": {
       "type": "string",
-      "description": "A unique identifier used to reduce the risk of dataset name collisions; initially the UUID will be created using a UUID generator tool ([example](https://www.uuidgenerator.net/)). However, we may want to develop a method that accepts a seed value using a combination of fields–such as name, kind and source–to create a repeatable value."
+      "description": "A unique identifier used to reduce the risk of dataset name collisions; initially the UUID will be created using a UUID generator tool ([example](https://www.uuidgenerator.net/)). However, we may want to develop a method that accepts a seed value using a combination of fields–such as name, kind and source–to create a repeatable value. (obligatorisk)"
     },
     "datasetKind": {
       "type": "string",
-      "description": "The kind of dataset being cataloged; Expected values are `virtualDataset` or `managedDataset`.",
+      "description": "The kind of dataset being cataloged; Expected values are `virtualDataset` or `managedDataset`. (TODO:obligatorisk)/anbefalt/valgfri)",
       "examples": ["virtualDataset", "managedDataset"]
     },
     "userConsumptionMode": {
       "type": "string",
-      "description": "List of data modes for which the dataset may be used.  Expected sample values might be `analytical` or `operational`. <br/>Note: in the future, this will probably be replaced by ports.",
+      "description": "List of data modes for which the dataset may be used.  Expected sample values might be `analytical` or `operational`. <br/>Note: in the future, this will probably be replaced by ports. (anbefalt)",
       "examples": ["analytical", "operational"]
     },
     "type": {
       "type": "string",
-      "description": "Identifies the types of objects in the dataset. For BigQuery or any other database, the expected value would be Tables.",
+      "description": "Identifies the types of objects in the dataset. For BigQuery or any other database, the expected value would be Tables. (obligatorisk)",
       "examples": ["Tables"]
     },
     "tenant": {
       "type": "string",
-      "description": "Indicates the property the data is primarily associated with. Value is case insensitive."
+      "description": "Indicates the property the data is primarily associated with. Value is case insensitive. (TODO:obligatorisk/anbefalt/valgfri)"
     },
     "tags": {
       "type": "array",
-      "description": "A list of tags that may be assigned to the dataset, table or column; the `tags` keyword may appear at any level.",
+      "description": "A list of tags that may be assigned to the dataset, table or column; the `tags` keyword may appear at any level. (anbefalt)",
       "items": {
         "type": "string"
       }
     },
     "status": {
       "type": "string",
-      "description": "Current status of the dataset. Valid values are `production`, `test`, or `development`.",
+      "description": "Current status of the dataset. Valid values are `production`, `test`, or `development`. (obligatorisk)",
       "examples": ["production", "test", "development"]
     },
     "sourceSystem": {
       "type": "string",
-      "description": "The system where the dataset resides. Expected value can be BigQuery.",
+      "description": "The system where the dataset resides. Expected value can be BigQuery. (Todo: obligatorisk/anbefalt, ikke valgfri)",
       "examples": ["BigQuery"]
     },
     "sourcePlatform": {
       "type": "string",
-      "description": "The platform where the dataset resides. Expected value is GoogleCloudPlatform, IBMCloud, Azure...",
+      "description": "The platform where the dataset resides. Expected value is GoogleCloudPlatform, IBMCloud, Azure...   (Todo: obligatorisk/anbefalt, ikke valgfri)",
       "examples": ["GoogleCloudPlatform", "IBMCloud", "Azure", "AWS"]
     },
     "server": {
       "type": "string",
-      "description": "The server where the dataset resides."
+      "description": "The server where the dataset resides. (Todo: obligatorisk/anbefalt, ikke valgfri)"
     },
     "quantumName": {
       "type": "string",
-      "description": "The name of the data quantum or data product."
+      "description": "The name of the data quantum or data product. (obligatorisk)"
     },
     "productSlackChannel": {
       "type": "string",
-      "description": "Slack channel of the team responsible for maintaining the dataset."
+      "description": "Slack channel of the team responsible for maintaining the dataset. (valgfri)"
     },
     "productFeedbackUrl": {
       "type": "string",
-      "description": "The URL for submitting feedback to the team responsible for maintaining the dataset."
+      "description": "The URL for submitting feedback to the team responsible for maintaining the dataset. (valgfri)"
     },
     "productDl": {
       "type": "string",
-      "description": "The email distribution list (DL) of the persons or team responsible for maintaining the dataset."
+      "description": "The email distribution list (DL) of the persons or team responsible for maintaining the dataset. (valgfri)"
     },
     "username": {
       "type": "string",
-      "description": "User credentials for connecting to the dataset; how the credentials will be stored/passed is outside of the scope of the contract."
+      "description": "User credentials for connecting to the dataset; how the credentials will be stored/passed is outside of the scope of the contract. (valgfri)"
     },
     "password": {
       "type": "string",
-      "description": "User credentials for connecting to the dataset; how the credentials will be stored/passed is out of the scope of this contract."
+      "description": "User credentials for connecting to the dataset; how the credentials will be stored/passed is out of the scope of this contract. (valgfri)"
     },
     "driverVersion": {
       "type": "string",
-      "description": "The version of the connection driver to be used to connect to the dataset."
+      "description": "The version of the connection driver to be used to connect to the dataset. (valgfri)"
     },
     "driver": {
       "type": "string",
-      "description": "The connection driver required to connect to the dataset."
+      "description": "The connection driver required to connect to the dataset. (valgfri)"
     },
     "description": {
       "type": "object",
-      "description": "High level description of the dataset.",
+      "description": "High level description of the dataset. (obligatorisk)",
       "properties": {
         "usage": {
           "type": "string",
-          "description": "Intended usage of the dataset."
+          "description": "Intended usage of the dataset. (TODO:obligatorisk/anbefalt/valgfri)"
         },
         "purpose": {
           "type": "string",
-          "description": "Purpose of the dataset."
+          "description": "Purpose of the dataset. (TODO:obligatorisk/anbefalt/valgfri)"
         },
         "limitations": {
           "type": "string",
-          "description": "Limitations of the dataset."
+          "description": "Limitations of the dataset. (TODO:obligatorisk/anbefalt/valgfri)"
         }
       }
     },
     "project": {
       "type": "string",
-      "description": "Associated project name, can be used for billing or administrative purpose. Used to be datasetProject."
+      "description": "Associated project name, can be used for billing or administrative purpose. Used to be datasetProject. (TODO:obligatorisk/anbefalt/valgfri)"
     },
     "datasetName": {
       "type": "string",
-      "description": "May be required in cloud instance like GCP BigQuery dataset name."
+      "description": "May be required in cloud instance like GCP BigQuery dataset name. (TODO:obligatorisk/anbefalt/valgfri)"
     },
     "datasetDomain": {
       "type": "string",
-      "description": "Name of the logical domain dataset the contract describes. This field is only required for output data contracts.",
+      "description": "Name of the logical domain dataset the contract describes. This field is only required for output data contracts. (TODO:obligatorisk/anbefalt, ikke valgfri)",
       "examples": ["imdb_ds_aggregate", "receiver_profile_out", "transaction_profile_out"]
     },
     "database": {
       "type": "string",
-      "description": "The database where the dataset resides."
+      "description": "The database where the dataset resides. (TODO:obligatorisk/anbefalt/valgfri)"
     },
     "dataset": {
       "type": "array",
+      "description": "(TODO:obligatorisk/anbefalt/valgfri)",
       "items": {
         "$ref": "#/$defs/Dataset"
       }
     },
     "price": {
+      "description": "(TODO:obligatorisk/anbefalt/valgfri)",
       "$ref": "#/$defs/Pricing"
     },
     "stakeholders": {
       "type": "array",
+      "description": "(TODO:obligatorisk/anbefalt/valgfri)",
       "items": {
         "$ref": "#/$defs/Stakeholder"
       }
     },
     "roles": {
       "type": "array",
-      "description": "A list of roles that will provide user access to the dataset.",
+      "description": "A list of roles that will provide user access to the dataset. (TODO:obligatorisk/anbefalt/valgfri)",
       "items": {
         "$ref": "#/$defs/Role"
       }
     },
     "slaDefaultColumn": {
       "type": "string",
-      "description": "Columns (using the Table.Column notation) to do the checks on. By default, it is the partition column."
+      "description": "Columns (using the Table.Column notation) to do the checks on. By default, it is the partition column. (TODO:obligatorisk/anbefalt/valgfri)"
     },
     "slaProperties": {
       "type": "array",
-      "description": "A list of key/value pairs for SLA specific properties. There is no limit on the type of properties (more details to come).",
+      "description": "A list of key/value pairs for SLA specific properties. There is no limit on the type of properties (more details to come). (TODO:obligatorisk/anbefalt/valgfri)",
       "items": {
         "$ref": "#/$defs/ServiceLevelAgreementProperty"
       }
